@@ -1,27 +1,24 @@
 /*
- * Copyright (c) 2018 Pivotal Software Inc, All Rights Reserved.
+ * RabbitMQ Stream Perf Test for CF
+ *  Copyright 2021 VMware, Inc.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *  SPDX-License-Identifier: Apache-2.0
  *
- *       https://www.apache.org/licenses/LICENSE-2.0
+ *  This product is licensed to you under the Apache 2.0 license (the "License").
+ *  You may not use this product except in compliance with the Apache 2.0 License.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *  This product may include a number of subcomponents with separate copyright notices
+ *  and license terms. Your use of these subcomponents is subject to the terms and
+ *  conditions of the subcomponent's license, as noted in the LICENSE file.
  */
 
-package com.rabbitmq.pcf;
+package com.rabbitmq.stream.perf.cf;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import com.rabbitmq.perf.PerfTest;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;
@@ -32,13 +29,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import com.rabbitmq.stream.perf.StreamPerfTest;
 
 /**
  *
  */
-public class PcfPerfTest {
+public class StreamPerfTestCF {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String uris = uris(System.getenv("VCAP_SERVICES"));
         if (uris == null) {
             throw new IllegalArgumentException("Unable to retrieve broker URI(s) from VCAP_SERVICES");
@@ -50,21 +48,10 @@ public class PcfPerfTest {
         args[args.length - 2] = "--uris";
         args[args.length - 1] = uris;
 
-        UnaryOperator<String> lookup = name -> System.getenv(name);
-        PerfTest.PerfTestOptions options = new PerfTest.PerfTestOptions()
-            .setArgumentLookup(
-                PerfTest.LONG_OPTION_TO_ENVIRONMENT_VARIABLE
-                    .andThen(PerfTest.ENVIRONMENT_VARIABLE_PREFIX)
-                    .andThen(envName -> {
-                        String envValue = System.getenv(envName);
-                        if (envValue != null && !extractVariables(envValue).isEmpty()) {
-                            envValue = evaluate(envValue, lookup);
-                        }
-                        return envValue;
-                    })
-            );
+        //ToDo: convert ENV_VARS to command-line args
 
-        PerfTest.main(args, options);
+        StreamPerfTest streamPerfTest = new StreamPerfTest(args, System.out, System.err, null);
+        streamPerfTest.call();
     }
 
     static String uris(String vcapServices) {
