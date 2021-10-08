@@ -41,10 +41,13 @@ public class StreamPerfTestCF {
         if (uris == null) {
             throw new IllegalArgumentException("Unable to retrieve broker URI(s) from VCAP_SERVICES");
         }
+        String[] options = argsFromEnv();
         if (args == null) {
             args = new String[0];
         }
-        args = Arrays.copyOf(args, args.length + 2);
+        int initialArgsLength = args.length;
+        args = Arrays.copyOf(args, initialArgsLength + options.length + 2);
+        System.arraycopy(options, 0, args, initialArgsLength, options.length);
         args[args.length - 2] = "--uris";
         args[args.length - 1] = uris;
 
@@ -52,6 +55,17 @@ public class StreamPerfTestCF {
 
         StreamPerfTest streamPerfTest = new StreamPerfTest(args, System.out, System.err, null);
         streamPerfTest.call();
+    }
+
+    static String[] argsFromEnv() {
+        String batchSize = System.getenv("BATCH_SIZE");
+        if (batchSize == null) {
+            return null;
+        }
+        String[] options = new String[2];
+        options[0] = "--batch-size";
+        options[1] = batchSize;
+        return options;
     }
 
     static String uris(String vcapServices) {
