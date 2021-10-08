@@ -58,13 +58,19 @@ public class StreamPerfTestCF {
     }
 
     static String[] argsFromEnv() {
+        String[] options = new String[0];
         String batchSize = System.getenv("BATCH_SIZE");
-        if (batchSize == null) {
-            return null;
+        if (batchSize != null) {
+            options = Arrays.copyOf(options, options.length + 2);
+            options[options.length - 2] = "--batch-size";
+            options[options.length -1 ] = batchSize;
         }
-        String[] options = new String[2];
-        options[0] = "--batch-size";
-        options[1] = batchSize;
+        String confirms = System.getenv("CONFIRMS");
+        if (confirms != null) {
+            options = Arrays.copyOf(options, options.length + 2);
+            options[options.length - 2] = "--confirms";
+            options[options.length -1 ] = confirms;
+        }
         return options;
     }
 

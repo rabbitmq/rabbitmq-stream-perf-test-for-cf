@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SystemStubsExtension.class)
 public class CFEnvParsingTest {
-    final static String BATCH_SIZE = "90";
+//    final static String BATCH_SIZE = "90";
 //    final static String CONFIRMS = "10101";
 //    final static String CONSUMERS_BY_CONNECTION = "2";
 //    final static String CODEC = "simple"; //can be qpic or simple
@@ -58,12 +58,9 @@ public class CFEnvParsingTest {
     // LOAD_BALANCER
     // DELETE_STREAMS
 
-    @SystemStub
-    private EnvironmentVariables environmentVariables;
 
     @Test
     public void extractBatchSize() {
-        environmentVariables.set("BATCH_SIZE", BATCH_SIZE);
-        assertArrayEquals(new String[]{"--batch-size", BATCH_SIZE}, argsFromEnv());
+        assertArrayEquals(new String[]{"--batch-size", "90","--confirms","10101"}, argsFromEnv());
     }
 }
