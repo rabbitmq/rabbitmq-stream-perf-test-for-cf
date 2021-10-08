@@ -1,4 +1,4 @@
-# RabbitMQ PerfTest for Cloud Foundry
+# RabbitMQ Stream Perf Test for Cloud Foundry
 
 This is a template project to easily run [RabbitMQ Performance Tool](https://www.rabbitmq.com/java-tools.html#throughput-load-testing)
 on [Cloud Foundry](https://www.cloudfoundry.org/). It has been tested against
