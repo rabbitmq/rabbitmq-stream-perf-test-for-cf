@@ -1,6 +1,6 @@
 /*
  * RabbitMQ Stream Perf Test for CF
- *  Copyright 2021 VMware, Inc.
+ *  Copyright (c) 2020-2023 Broadcom. All Rights Reserved. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
  *
  *  SPDX-License-Identifier: Apache-2.0
  *
@@ -91,7 +91,7 @@ public class VcapServicesParsingTest {
         + "        \"amqp\",\n"
         + "        \"stomp\",\n"
         + "     \"mqtt\",\n"
-        + "     \"pivotal\"\n"
+        + "     \"broadcom\"\n"
         + "   ]\n"
         + " }]}\n";
 
@@ -161,7 +161,7 @@ public class VcapServicesParsingTest {
         + "     \"amqp\",\n"
         + "     \"stomp\",\n"
         + "     \"mqtt\",\n"
-        + "     \"pivotal\"\n"
+        + "     \"broadcom\"\n"
         + "   ]\n"
         + " },{\n"
         + "   \"credentials\": {\n"
@@ -229,7 +229,7 @@ public class VcapServicesParsingTest {
         + "     \"amqp\",\n"
         + "     \"stomp\",\n"
         + "     \"mqtt\",\n"
-        + "     \"pivotal\"\n"
+        + "     \"broadcom\"\n"
         + "   ]\n"
         + " }]}";
 
@@ -319,7 +319,7 @@ public class VcapServicesParsingTest {
         + "     \"amqp\",\n"
         + "     \"stomp\",\n"
         + "     \"mqtt\",\n"
-        + "     \"pivotal\"\n"
+        + "     \"broadcom\"\n"
         + "   ]\n"
         + " }]}";
 

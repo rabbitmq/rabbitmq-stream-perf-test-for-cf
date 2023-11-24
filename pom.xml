@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ RabbitMQ Stream Perf Test for CF
-  ~  Copyright 2021 VMware, Inc.
+  ~  Copyright (c) 2020-2023 Broadcom. All Rights Reserved. The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
   ~
   ~  SPDX-License-Identifier: Apache-2.0
   ~

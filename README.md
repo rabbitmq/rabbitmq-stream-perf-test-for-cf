@@ -2,7 +2,7 @@
 
 This is a template project to easily run [RabbitMQ Performance Tool](https://www.rabbitmq.com/java-tools.html#throughput-load-testing)
 on [Cloud Foundry](https://www.cloudfoundry.org/). It has been tested against
-[VMware Tanzu Application Service](https://tanzu.vmware.com/application-service).
+[Broadcom Tanzu Application Service](https://tanzu.vmware.com/application-service).
 
 ## How to use
 
@@ -47,4 +47,5 @@ milestones or release candidates, and snapshots. To know about the available ver
 
 RabbitMQ PerfTest for Tanzu Application Service is [Apache 2.0 licensed](https://www.apache.org/licenses/LICENSE-2.0.html).
 
-_Sponsored by [VMware](https://vmware.com)_
+Copyright 2021-2023 Broadcom. All Rights Reserved.
+The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
